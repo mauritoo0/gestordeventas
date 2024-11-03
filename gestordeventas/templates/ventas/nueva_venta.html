@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    
+    <h1>{{ title }}</h1>
+
+{% if form.errors %}
+    <div class="error">
+        <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}    
+
+    
+<div class="form-agregar-editar">
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.vendedor.label }} 
+            {{ form.vendedor }}
+            
+        </div>
+        <div>
+            {{ form.cliente.label }} 
+            {{ form.cliente }}
+           
+        </div>  
+        <div>
+            {{ form.articulo.label }} 
+            {{ form.articulo }}
+            
+        </div> 
+        <div>
+            {{ form.cantidad.label }} 
+            {{ form.cantidad }}
+            
+        </div>
+        <div>
+            {{ form.fecha.label }} 
+            {{ form.fecha }}
+            
+        </div> 
+        <button type="submit" class= "boton-anadir" >Guardar venta</button>
+
+    </form>
+</div>
+</div>
+
+{% endblock %}

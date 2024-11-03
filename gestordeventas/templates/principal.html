@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-principal fade-in">
+    <div class="titulo-principal">
+        <h1>Bienvenido, {{ user.username }}</h1>
+    </div>
+
+    <div class="resumen-principal">
+        <p>Este es el resumen de ventas del mes:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Ventas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vendedor in vendedores %}
+                <tr>
+                    <td>{{ vendedor.nombre }}</td>
+                </tr>
+                {% endfor %}
+                {% for venta in ventas %}
+                <tr>
+                    <td>{{ venta.articulo }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>    
+{% endblock %}

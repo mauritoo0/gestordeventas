@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    <h1>{{title}}</h1>
+
+<div class="form-agregar-editar">
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.nombre.label }} 
+            {{ form.nombre }}
+             
+        </div>
+        <div>
+            {{ form.correo.label }} 
+            {{ form.correo }}
+            
+            
+        </div>    
+        <button type="submit" class="boton-anadir">Guardar Cambios</button>
+    </form>
+    
+</div>
+</div>
+{% endblock %}

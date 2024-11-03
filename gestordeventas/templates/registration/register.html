@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="atras-register-login">
+    <button type="button" onclick="window.location.href='{% url 'index' %}'">Inicio</button>
+</div>
+
+<div class="container fade-in">
+    <h1>{{ title }}</h1>
+    <div class="form-agregar-editar">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <div>
+                {{ form.username.label }}
+                {{ form.username }}
+                {{ form.username.errors }} 
+            </div>
+
+            <div>
+                {{ form.email.label }}
+                {{ form.email }}
+                {{ form.email.errors }} 
+            </div>
+
+            <div>
+                {{ form.password1.label }}
+                {{ form.password1 }}
+                {{ form.password1.errors }} 
+            </div>
+
+            <div>
+                {{ form.password2.label }}
+                {{ form.password2 }}
+                {{ form.password2.errors }} 
+            </div>
+
+            <button type="submit" class="boton-anadir">Registrarse</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+
+<div class="container fade-in" >
+    <h1>{{title}}</h1>
+<div class="form-agregar-editar">
+
+
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+    </div>
+    <div>
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+    </div>
+    <div>
+        {{ form.email.label }}
+        {{ form.email }}
+    </div>
+</div>
+    <button type="submit" class= "boton-anadir">Guardar cambios</button>
+</form>
+</div>
+
+{% endblock %}

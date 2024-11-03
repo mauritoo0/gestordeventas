@@ -1,0 +1,347 @@
+:root { 
+    --color-fondo-primario: #0a105e;
+    --color-fondo-secundario: #20278a;
+    --color-blanco: #f3f3f3;
+    --botones-hover: #301b7a;
+    --btns-tablas: #452ca0;
+    --btn-anadir: #23145a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+     
+}
+
+body{
+    flex-direction: column;
+    align-items: center;
+    margin: auto;    
+    background: linear-gradient(to right, var(--color-fondo-primario), var(--color-fondo-secundario));
+    font-family: "Sarabun", sans-serif;
+    color: var(--color-blanco);
+    height: 100vh;
+    width: 75vw;
+
+}
+
+
+.fade-in {
+    opacity: 0; /* Comienza invisible */
+    animation: fadeIn 1.5s forwards; /* La animación dura 1 segundo y mantiene el estado final */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+.fade-in-delay {
+    animation-delay: 1s; 
+}
+
+.navbar-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+
+}
+
+.navbar {
+    width: 75vw;
+    display:flex;
+    justify-content: space-around;
+    margin: 15px 5px;
+    list-style-type: none;
+    gap: 10px;
+}
+
+.navbar-button{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    font-weight: bold;
+    color: var(--color-fondo-primario);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    cursor: pointer;
+}
+
+.navbar-button:hover{
+    background-color: var(--botones-hover);
+    border-radius: 10px;
+    color: var(--color-blanco);
+    box-shadow: 1px 1px 15px rgb(2, 2, 71);
+
+}
+
+.navbar li{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+}
+
+
+.index-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+
+}
+
+.boton-index{
+    display: flex;
+    width: 250px;
+    height: 50px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    font-weight: bold;
+    color: var(--color-fondo-primario);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    cursor: pointer;
+}
+
+.boton-index:hover{
+    background-color: var(--botones-hover);
+    border-radius: 10px;
+    color: var(--color-blanco);
+    box-shadow: 1px 1px 15px rgb(2, 2, 71);
+
+}
+
+
+.container-principal{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    height: 100vh;
+    align-items:start;
+    
+}
+
+.titulo-principal{
+    margin-top: 300px;
+}
+
+.resumen-principal{
+    height: 100%;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+    
+}
+
+.boton-atras{
+    align-self: flex-start;
+    margin: 5px 5px;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+ 
+.boton-atras button{
+    justify-content: baseline;
+    text-align: center;
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    color: var(--color-fondo-primario);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.boton-atras button:hover{
+    background-color: var(--botones-hover);
+    border-style: none;
+    border-radius: 10px;
+    color: var(--color-blanco);
+    box-shadow: 1px 1px 15px rgb(2, 2, 71);
+    
+}
+
+.atras-register-login button{
+    justify-content: baseline;
+    text-align: center;
+    margin-top: 20px;
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    color: var(--color-fondo-primario);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.atras-register-login button:hover{
+    background-color: var(--botones-hover);
+    border-style: none;
+    border-radius: 10px;
+    color: var(--color-blanco);
+    box-shadow: 1px 1px 15px rgb(2, 2, 71);
+    
+    
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.buscador{
+    display: flex;
+    margin: 10px 0;
+}
+
+.buscador > form {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+
+.campo-busqueda {
+    padding: 3px;
+
+}
+
+
+.buscador .boton-buscar {
+    justify-content: start;
+    margin: 1px 15px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    align-self:flex-end;
+    color: rgb(252, 252, 252);
+    background-color: var(--btns-tablas);
+    cursor: pointer;
+}
+
+.buscador .boton-cancelar-busqueda {
+    justify-content: start;
+    margin: 1px 15px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    align-self:flex-end;
+    color: rgb(252, 252, 252);
+    background-color: var(--btns-tablas);
+    cursor: pointer;
+}
+.tabla-detalles {
+    margin-top: 20px;
+    width: 100%;
+   
+}
+
+.tabla-detalles th, .tabla-detalles td {
+    padding: 10px; 
+    text-align: left;
+}
+
+.tabla-detalles thead{
+    background: linear-gradient(to right, #080d50, #1e2480);
+    
+}
+
+.eliminar-editar {
+    margin: 3px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    align-self:flex-end;
+    color: rgb(252, 252, 252);
+    background-color: var(--btns-tablas);
+    cursor: pointer;
+    
+}
+
+.boton-anadir {
+    padding: 3px 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+    align-self:flex-start;
+    color: rgb(255, 255, 255);
+    background-color: var(--btn-anadir);
+    cursor: pointer;
+}
+
+#acciones{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.container-perfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.container-perfil h1{
+    margin-bottom: 30px;
+}
+
+.container-perfil p{
+    padding: 15px 0;
+}
+
+
+
+.form-agregar-editar form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    }
+
+
+
+.form-agregar-editar form input{
+    margin-left: 10px;
+ }
+
+.error li{
+    color: red;
+    list-style: none;
+}
+
+.errorlist li{
+    color: red;
+    list-style: none;
+
+}
+

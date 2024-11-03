@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    <h1>{{title}}</h1>
+
+<div class="buscador">
+    <form method="GET" action="">
+        
+        {{ form.nombre }}
+        {{ form.correo }}
+        
+        
+        <button type="submit" class="boton-buscar">Buscar vendedor</button>
+
+        <button type="button" onclick="window.location.href='{% url 'vendedores' %}'" class="boton-cancelar-busqueda">Cancelar búsqueda</button>
+        
+    
+    </form>
+</div>
+
+{% if user.is_superuser %}
+
+
+<button type="button" onclick="window.location.href='{% url 'nuevo_vendedor' %}'" class="boton-anadir">Añadir vendedor</button>
+
+{% endif %}
+
+
+<table class="tabla-detalles">
+    <thead>
+        <tr>
+            <th>Vendedor</th>
+            <th>Correo electrónico</th>
+            {% if user.is_superuser %}
+            <th>Acciones</th> 
+            {% endif %}
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for vendedor in vendedores %}
+
+        <tr>
+            <td>{{vendedor.nombre}}</td>
+            <td>{{vendedor.correo}}</td>
+            {% if user.is_superuser %}
+            <td id="acciones">
+                <form method="POST" action="{% url 'editar_vendedor' vendedor.id %}">
+                    {% csrf_token %}
+                    <button   button type="submit" name="editar" value="true" class="eliminar-editar"> Editar</button>
+                </form>
+
+                <form method="POST" action="{% url 'eliminar_vendedor' vendedor.id %}">
+                    {% csrf_token %}
+                    <button type="submit" name="eliminar" value="true" class="eliminar-editar" onclick="return confirm('¿Estás seguro que deseas eliminar?')"> Eliminar</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

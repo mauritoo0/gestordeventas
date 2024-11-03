@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    <h1>{{title}}</h1>
+
+<div class="form-agregar-editar">
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.nombre.label }} 
+            {{ form.nombre }}
+            
+        </div>
+        <div>
+            {{ form.apellidos.label }} 
+            {{ form.apellidos }}
+           
+        </div>  
+        <div>
+            {{ form.direccion.label }} 
+            {{ form.direccion }}
+            
+        </div> 
+        <div>
+            {{ form.poblacion.label }} 
+            {{ form.poblacion }}
+            
+        </div>
+        <div>
+            {{ form.telefono.label }} 
+            {{ form.telefono }}
+            
+        </div> 
+        <div>
+            {{ form.correo.label }}
+            {{ form.correo }}
+            {% if form.correo.errors %}
+                <div class="error">{{ form.correo.errors }}</div>
+            {% endif %}
+        </div>    
+        <div>
+            {{ form.vendedor.label }} 
+            {{ form.vendedor }}
+            
+        </div>
+            <button type="submit" class= "boton-anadir" >Guardar cliente</button>
+
+    </form>
+</div>    
+</div>
+
+{% endblock %}

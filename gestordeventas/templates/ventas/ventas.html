@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    <h1>{{title}}</h1>
+
+<div class="buscador">
+    <form method="GET" action="">
+        {{ form }}
+        <button type="submit" class="boton-buscar">Buscar ventas</button>
+
+        <button type="button" onclick="window.location.href='{% url 'ventas' %}'" class="boton-cancelar-busqueda">Cancelar búsqueda</button>
+    </form>
+</div>
+
+
+<button type="button" onclick="window.location.href='{% url 'nueva_venta' %}'" class="boton-anadir">Añadir venta</button>
+
+
+{% if ventas %}
+<table class="tabla-detalles">
+    <thead>
+        <tr>
+            <th>Artículo</th>
+            <th>Vendedor</th>
+            <th>Precio unitario s/IVA</th>
+            <th>Precio unitario c/IVA</th>
+            <th>Cantidad</th>
+            <th>Total venta s/IVA</th>
+            <th>Total venta c/IVA</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for venta in ventas %}
+        <tr>
+            <td>{{ venta.articulo.articulo }}</td>
+            <td>{{ venta.vendedor.nombre }}</td>
+            <td>{{ venta.articulo.precio_s_iva|floatformat:2 }}</td>
+            <td>{{ venta.articulo.precio_c_iva|floatformat:2 }}</td>
+            <td>{{ venta.cantidad }}</td>
+            <td>{{ venta.total_venta_s_iva|mul:venta.cantidad|floatformat:2 }}</td>
+            <td>{{ venta.total_venta_c_iva|mul:venta.cantidad|floatformat:2 }}</td>
+            <td>{{ venta.fecha }}</td>
+            <td id="acciones">
+                <form method="POST" action="{% url 'editar_venta' venta.id %}">
+                    {% csrf_token %}
+                    <button   button type="submit" name="editar" value="true" class="eliminar-editar"> Editar</button>
+                </form>
+
+                <form method="POST" action="{% url 'eliminar_venta' venta.id %}">
+                    {% csrf_token %}
+                    <button type="submit" name="eliminar" value="true" class="eliminar-editar" onclick="return confirm('¿Estás seguro que deseas eliminar?')"> Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>No se encontraron resultados.</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

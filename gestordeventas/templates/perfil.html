@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
+<title>{{ title }}</title>
+
+
+{% block content %}
+
+<div class="container-perfil fade-in">
+<h1>Usuario: {{user.username}}</h1>
+<p>Nombre: {{ user.first_name }}</p>
+<p>Apellidos: {{ user.last_name }}</p>
+<p>Correo electrónico: {{ user.email }}</p>
+
+<button type="button" onclick="window.location.href='{% url 'editar_perfil' %}'" class="boton-anadir">Editar perfil</button>
+
+
+{% endblock %}

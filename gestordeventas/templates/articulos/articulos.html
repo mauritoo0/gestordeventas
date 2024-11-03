@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+
+<div class="container fade-in">
+    <h1>{{title}}</h1>
+
+<div class="buscador">
+    <form method="GET" action="">
+        {{ form }}
+        <button type="submit" class="boton-buscar">Buscar artículo</button>
+
+        <button type="button" onclick="window.location.href='{% url 'articulos' %}'" class="boton-cancelar-busqueda">Cancelar búsqueda</button>
+    </form>
+</div>
+
+    
+<button type="button" onclick="window.location.href='{% url 'nuevo_articulo' %}'" class="boton-anadir">Añadir artículo</button>
+
+<table class="tabla-detalles">
+    <thead>
+        <tr>
+            <th>Artículo</th>
+            <th>Cantidad</th>
+            <th>Precio s/IVA</th>
+            <th>Precio c/IVA</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for articulo in articulos %}
+        <tr>
+            <td>{{ articulo.articulo }}</td>
+            <td>{{ articulo.cantidad }}</td>
+            <td>{{ articulo.precio_s_iva|floatformat:2 }}</td>
+            <td>{{ articulo.precio_c_iva|floatformat:2 }}</td>
+            <td id="acciones">
+                <form method="POST" action="{% url 'editar_articulo' articulo.id %}">
+                    {% csrf_token %}
+                    <button   button type="submit" name="editar" value="true" class="eliminar-editar"> Editar</button>
+                </form>
+
+                <form method="POST" action="{% url 'eliminar_articulo' articulo.id %}">
+                    {% csrf_token %}
+                    <button type="submit" name="eliminar" value="true" class="eliminar-editar" onclick="return confirm('¿Estás seguro que deseas eliminar?')"> Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>    
+
+{% endblock %}
+
