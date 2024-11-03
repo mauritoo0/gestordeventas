@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-r%@lat+^$49^#-b&f%*8s%7kx5lvsg0m^^q#ua_20*gf8ccpx%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://gestordeventas.onrender.com']
 
 
 # Application definition
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'gestor.urls'
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'gestor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gestordeventasdb',
+        'USER': 'mauritoo0',
+        'PASSWORD': 'InzYHZimJDqzMxEw3krDWwLtF4GeBRQ5',
+        'HOST': 'dpg-csjqs8i3esus7388e3tg-a.oregon-postgres.render.com',  
+        'PORT': '5432',       
     }
 }
 
